@@ -51,11 +51,11 @@ final class ProductModifier implements CollectionModifierInterface
         if ($productIds) {
             $select = $documentCollection->getSelect();
             $select->joinLeft(
-                ['mdpl' => 'opengento_document_product_link'],
-                'main_table.entity_id=mdpl.document_id',
+                ['odpl' => 'opengento_document_product_link'],
+                'main_table.entity_id=odpl.document_id',
                 ''
             );
-            $select->orWhere('mdpl.product_id IN (?)', $productIds);
+            $select->orWhere('odpl.product_id IN (?)', $productIds);
         }
     }
 }
