@@ -24,7 +24,7 @@
         "roave/security-advisories": "dev-master"
     },
     "suggest": {
-        "opengento/module-document-widget": ""
+        "opengento/module-document-widget": "This module aims to help merchants to manage easily their documents on the Magento 2 storefront."
     },
     "license": [
         "MIT"
