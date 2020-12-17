@@ -12,6 +12,7 @@ use Magento\Catalog\Model\ResourceModel\Product\Collection;
 use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory;
 use Magento\Framework\Data\Collection\AbstractDb;
 use Magento\Framework\Data\CollectionModifierInterface;
+use Magento\Framework\DB\Helper;
 use Opengento\DocumentSearch\Model\QueryData;
 
 final class ProductModifier implements CollectionModifierInterface
@@ -26,17 +27,24 @@ final class ProductModifier implements CollectionModifierInterface
      */
     private $queryData;
 
+    /**
+     * @var Helper
+     */
+    private $dbHelper;
+
     public function __construct(
         CollectionFactory $collectionFactory,
-        QueryData $queryData
+        QueryData $queryData,
+        Helper $dbHelper
     ) {
         $this->collectionFactory = $collectionFactory;
         $this->queryData = $queryData;
+        $this->dbHelper = $dbHelper;
     }
 
     public function apply(AbstractDb $documentCollection): void
     {
-        $term = '%' . $this->queryData->getTerm() . '%';
+        $term = $this->dbHelper->escapeLikeValue($this->queryData->getTerm(), ['position' => 'any']);
 
         /** @var Collection $collection */
         $collection = $this->collectionFactory->create();
