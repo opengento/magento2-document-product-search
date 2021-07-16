@@ -15,8 +15,8 @@
     "require": {
         "magento/framework": "^103.0",
         "magento/module-catalog": "^104.0",
-        "opengento/module-document-search": "^1.0",
-        "opengento/module-document-product-link": "^1.0"
+        "opengento/module-document-search": "^1.0||^2.0",
+        "opengento/module-document-product-link": "^1.0||^2.0"
     },
     "require-dev": {
         "magento/magento-coding-standard": "^5",
@@ -24,7 +24,8 @@
         "roave/security-advisories": "dev-master"
     },
     "suggest": {
-        "opengento/module-document-widget": "This module aims to help merchants to manage easily their documents on the Magento 2 storefront."
+        "opengento/module-document-widget": "This module aims to help merchants to manage easily their documents on the Magento 2 storefront.",
+        "opengento/module-document-restrict": "This module aims to restrict documents by type in Magento 2."
     },
     "license": [
         "MIT"
